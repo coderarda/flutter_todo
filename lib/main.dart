@@ -23,20 +23,31 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            ListView.builder(
-              shrinkWrap: true,
-              itemBuilder: (ctx, idx) {
-                return elements[idx];
-              },
-              itemCount: elements.length,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemBuilder: (ctx, idx) {
+                      return elements[idx];
+                    },
+                    itemCount: elements.length,
+                  ),
+                ],
+              ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 50,
                   width: 500,
                   child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.zero, gapPadding: 2.0),
+                    ),
                     onChanged: (str) => submitText = str,
                   ),
                 ),
@@ -62,7 +73,8 @@ class _MyAppState extends State<MyApp> {
                                     style: checked
                                         ? const TextStyle(
                                             decoration:
-                                                TextDecoration.lineThrough, color: Colors.grey)
+                                                TextDecoration.lineThrough,
+                                            color: Colors.grey)
                                         : const TextStyle(
                                             decoration: TextDecoration.none),
                                   ),
